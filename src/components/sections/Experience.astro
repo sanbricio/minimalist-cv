@@ -3,7 +3,7 @@ import Section from "@/components/Section.astro";
 
 import { work } from "@cv";
 ---
-<!-- TODO Mirar si poner highlights en el cv-->
+
 <Section title="Experiencia Laboral">
     <ul>
         {
@@ -34,7 +34,13 @@ import { work } from "@cv";
                                     <time>{years}</time>
                                 </header>
                                 <footer>
-                                    <p>{summary}</p>
+                                    <p>{summary}</p><br/>
+                                    <h4>Highlights</h4><br/>
+                                    <ul class="highlights-list">
+                                        {highlights.map((highlight) => (
+                                            <li>{highlight}</li>
+                                        ))}
+                                    </ul>
                                 </footer>
                             </article>
                         </li>
@@ -49,7 +55,7 @@ import { work } from "@cv";
     ul {
         display: flex;
         flex-direction: column;
-        gap: 32px;
+        gap: 16px;
     }
 
     article h3 {
@@ -73,4 +79,22 @@ import { work } from "@cv";
         color: #555;
         font-size: 0.85rem;
     }
+
+    .highlights-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        font-size: 0.6rem;
+    }
+
+    .highlights-list li {
+        border-radius: 6px;
+        background: #eee;
+        color: #444;
+        font-size: 0.6rem;
+        font-weight: 500;
+        padding: 0.2rem 0.6rem;
+        width: fit-content;
+    }
+
 </style>
